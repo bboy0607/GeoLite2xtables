@@ -1,0 +1,12 @@
+#!/bin/bash -e
+CURRENT_LOCATION=$(pwd)
+TEMPDIR=$(mktemp -d)
+GEOLITEURL=''
+
+cd $TEMPDIR
+wget -O GeoLite2-Country.tar.gz $GEOLITEURL
+tar xzvf GeoLite2-Country.tar.gz
+cp GeoLite2-Country_*/GeoLite2-Country.mmdb /etc/nginx/
+service nginx reload
+cd $CURRENT_LOCATION
+rm -rf $TEMPDIR

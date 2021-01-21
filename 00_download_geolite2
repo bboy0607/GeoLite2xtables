@@ -2,6 +2,7 @@
 
 TEMPZIP=$(mktemp)
 GEOLITEURL=''
+
 curl $GEOLITEURL > $TEMPZIP
 unzip -d /tmp -o -j $TEMPZIP '*/GeoLite2-Country-Blocks*'
 rm -rf $TEMPZIP
